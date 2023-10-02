@@ -19,7 +19,7 @@ class AuthProvider {
 
     verifyResponse() {
         return async (req, res, next) => {
-            const samlResponse = req.body.SAMLResponse;
+            const samlResponse = req.body;
             const user = await this._samlInstance.validatePostResponseAsync( samlResponse );
 
             req.session.nameID = user.profile.nameID;
