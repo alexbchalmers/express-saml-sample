@@ -22,7 +22,9 @@ class AuthProvider {
             const samlResponse = req.body.SAMLResponse;
             const user = await this._samlInstance.validatePostResponseAsync( samlResponse );
 
-            req.session.samlResponse = user;
+            req.session.nameID = user.profile.nameID;
+            req.session.email = user.profile.emailaddress;
+            req.session.displayname = user.profile.displayname;
             req.session.isAuthenticated = true;
 
             res.redirect('/')
