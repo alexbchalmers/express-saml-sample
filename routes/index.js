@@ -6,7 +6,11 @@ router.get('/', function(req, res, next) {
   res.render('index', {
     title: 'Express Sample',
     isAuthenticated: req.session.isAuthenticated,
-    user: req.session.samlResponse
+    user: {
+      nameId: req.session.nameID,
+      email: req.session.email,
+      displayname: req.session.displayname
+    }
   });
 });
 
