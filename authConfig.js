@@ -9,8 +9,10 @@ const samlConfig = {
     authnRequestBinding: process.env.SAML_IDP_SSO_SERVICE_BINDING || 'HTTP-Redirect',
     cert: process.env.SAML_IDP_TOKEN_SIGNING_CERT,
 
-    acceptedClockSkewMs: 300000, // 5 minutes,
-    requestIdExpirationPeriodMs: 900000, // 15 minutes
+    acceptedClockSkewMs: 5 * 60 * 1000,             // 5 minutes in ms
+    requestIdExpirationPeriodMs: 15 * 60 * 1000,    // 15 minutes in ms
+    wantAssertionsSigned: true,                     // AAD signs assertions
+    wantAuthnResponseSigned: false,                 // AAD does not sign responses by default
     disableRequestedAuthnContext: true,
     validateInResponseTo: 'ifPresent',
 
