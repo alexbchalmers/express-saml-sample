@@ -1,9 +1,5 @@
 <h1>{{title}}</h1>
-{{#if isAuthenticated }}
 <p>{{user.nameId}}</p>
 <p>{{user.displayname}}</p>
 <p>{{user.email}}</p>
-{{else}}
-<p>Welcome to {{title}}</p>
 <a href="/auth/login">Sign in</a>
-{{/if}}
